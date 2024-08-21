@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { HttpModule } from '@nestjs/axios/dist/http.module';
-import { WeatherController } from './weather.controller';
-import { WeatherService } from './weather.service';
+import { WeatherController } from './infra/controllers/weather.controller';
+import { WeatherService } from './application/service/weather.service';
 
 
 @Module({

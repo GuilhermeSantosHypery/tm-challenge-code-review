@@ -1,5 +1,5 @@
 import { Injectable, InternalServerErrorException } from "@nestjs/common";
-import { WeatherResponseData } from "./weather.response.data";
+import { WeatherResponseData } from "../../weather.response.data";
 import { catchError, firstValueFrom } from "rxjs";
 import { AxiosError, AxiosHeaders } from "axios";
 import { HttpService } from "@nestjs/axios";
