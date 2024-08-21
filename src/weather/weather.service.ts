@@ -45,7 +45,7 @@ export class WeatherService {
           }
       };
         const { data } = await firstValueFrom(
-          this.httpService.get<WeatherResponseData>(`https://api.api-ninjas.com/v1/weather?city=${city.city}`, rc).pipe(
+          this.httpService.get<WeatherResponseData>(`https://api.api-ninjas.com/v1/weather?city=${cities.city}`, rc).pipe(
             catchError((error: AxiosError) => {
               console.log(error.response.data);
               throw error.response.data;
@@ -64,6 +64,6 @@ export class WeatherService {
 
   async getMedia(city: any): Promise<string> {
     let response = this.getCity(city);
-    return `${(response.max_temp + await response.min_temp) / 2}`
+    return `${((await response).max_temp + await (await response).min_temp) / 2}`
   }
 }

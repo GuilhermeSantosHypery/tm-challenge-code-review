@@ -25,6 +25,6 @@ export class WeatherController {
   @HttpCode(201)
   async getAverage(@Body() city: string): Promise<any> {
     const response = this.service.getCity(city);
-    return `${(response.max_temp + await response.min_temp) / 2}`
+    return `${((await response).max_temp + await (await response).min_temp) / 2}`
   }
 }
