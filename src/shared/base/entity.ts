@@ -1,10 +1,9 @@
-
-const isEntity = (v: any): v is Entity<any> => {
+const isEntity = (v: any): v is Entity<any, any> => {
   return v instanceof Entity;
 };
 
-export abstract class Entity<T> {
-  public readonly _id: string;
+export abstract class Entity<T, ID> {
+  public readonly _id: ID;
   public readonly props: T;
 
   constructor(props: T, id?: string) {
@@ -12,7 +11,7 @@ export abstract class Entity<T> {
     this.props = props;
   }
 
-  public equals(object?: Entity<T>): boolean {
+  public equals(object?: Entity<T, ID>): boolean {
     if (object == null || object == undefined) {
       return false;
     }
