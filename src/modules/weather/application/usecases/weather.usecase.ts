@@ -1,18 +1,18 @@
-import { WheatherRepository } from '@/weather/domain/repository/weather.repository';
+import { WeatherRepository } from '@/weather/domain/repository/weather.repository';
 import { Inject, Injectable } from '@nestjs/common';
 
 @Injectable()
 export class WeatherUseCase {
   constructor(
-    @Inject(WheatherRepository)
-    private readonly wheatherRepository,
+    @Inject(WeatherRepository)
+    private readonly weatherRepository,
   ) {}
 
   async findAllCities() {
-    return await this.wheatherRepository.findCities();
+    return await this.weatherRepository.findCities();
   }
 
   async findOneCity(city: string) {
-    return await this.wheatherRepository.findCity(city);
+    return await this.weatherRepository.findCity(city);
   }
 }

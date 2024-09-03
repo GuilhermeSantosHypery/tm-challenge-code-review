@@ -4,7 +4,7 @@ import { PrismaRepository } from '@shared/infra/database/prisma/PrismaRepository
 import { WeatherDomain } from '../entity/Weather.domain';
 
 @Injectable()
-export class WheatherRepository {
+export class WeatherRepository {
   constructor(private prismaWeatherRepository: PrismaRepository) {}
   async findCities(): Promise<WeatherDomain[]> {
     const cities = await this.prismaWeatherRepository.weather.findMany();
