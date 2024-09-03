@@ -1,14 +1,11 @@
-import { Module } from '@nestjs/common';
 import { HttpModule } from '@nestjs/axios/dist/http.module';
+import { Module } from '@nestjs/common';
 import { WeatherController } from './infra/controllers/weather.controller';
-import { WeatherService } from './application/service/weather.service';
-
+import { WeatherService } from './infra/external/weather.service';
 
 @Module({
   imports: [HttpModule],
   controllers: [WeatherController],
-  providers: [WeatherService]
+  providers: [WeatherService],
 })
-export class WeatherModule {
-
-}
+export class WeatherModule {}

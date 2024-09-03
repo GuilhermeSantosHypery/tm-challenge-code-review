@@ -1,22 +1,21 @@
-import { Entity } from "../../../../shared/base/entity";
-import { UniqueEntityID } from "../../../../shared/base/UniqueEntityID";
+import { Entity } from '@shared/base/entity';
+import { UniqueEntityID } from '@shared/base/UniqueEntityID';
 
 export interface WeatherProps {
   id?: UniqueEntityID;
-  cloud_pct: number;
-  temp: number;
-  feels_like: number;
-  humidity: number;
-  min_temp: number;
-  max_temp: number;
-  wind_speed: number;
-  wind_degrees: number;
-  sunrise: number;
-  sunset: number;
+  cloud_pct: bigint;
+  temp: bigint;
+  feels_like: bigint;
+  humidity: bigint;
+  min_temp: bigint;
+  max_temp: bigint;
+  wind_speed: bigint;
+  wind_degrees: bigint;
+  sunrise: bigint;
+  sunset: bigint;
 }
 
 export class WeatherDomain extends Entity<WeatherProps> {
-  
   private constructor(props: WeatherProps, id?: string) {
     super(props, id);
   }
@@ -25,41 +24,40 @@ export class WeatherDomain extends Entity<WeatherProps> {
     return new WeatherDomain(props, id);
   }
 
-  get cloudPct(): number {
+  get cloudPct(): bigint {
     return this.props.cloud_pct;
   }
-  get temp(): number {
+  get temp(): bigint {
     return this.props.temp;
   }
 
-  get feelsLike(): number {
+  get feelsLike(): bigint {
     return this.props.feels_like;
   }
-  get humidity(): number {
+  get humidity(): bigint {
     return this.props.humidity;
   }
 
-  get minTemp(): number {
+  get minTemp(): bigint {
     return this.props.min_temp;
   }
 
-  get maxTemp(): number {
+  get maxTemp(): bigint {
     return this.props.max_temp;
   }
 
-  get windSpeed(): number {
+  get windSpeed(): bigint {
     return this.props.wind_speed;
   }
 
-  get windDegrees(): number {
+  get windDegrees(): bigint {
     return this.props.wind_degrees;
   }
 
-  get sunrise(): number {
+  get sunrise(): bigint {
     return this.props.sunrise;
   }
-  get sunset(): number {
+  get sunset(): bigint {
     return this.props.sunset;
   }
-
 }

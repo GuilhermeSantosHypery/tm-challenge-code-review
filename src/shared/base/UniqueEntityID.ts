@@ -1,7 +1,6 @@
-import { ObjectId } from "bson";
-import AppError from "../core/AppError";
-import { Identifier } from "./Identifier";
-
+import { ObjectId } from 'bson';
+import AppError from '../core/AppError';
+import { Identifier } from './Identifier';
 
 export class UniqueEntityID extends Identifier<ObjectId> {
   private constructor(id?: string | ObjectId) {
@@ -14,7 +13,7 @@ export class UniqueEntityID extends Identifier<ObjectId> {
 
   static create(id?: string | ObjectId): UniqueEntityID {
     if (id && !this.isValid(id)) {
-      throw new AppError("id is invalid", { status: 400 });
+      throw new AppError('id is invalid', { status: 400 });
     }
 
     return new UniqueEntityID(id);

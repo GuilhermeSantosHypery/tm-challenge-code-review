@@ -1,13 +1,12 @@
-
 /* eslint-disable prefer-const */
 
-import { PrismaRepository } from "../infra/database/prisma/PrismaRepository";
+import { PrismaRepository } from '../infra/database/prisma/PrismaRepository';
 
 export class BaseRepository {
   public constructor(
     protected prisma: PrismaRepository,
     readonly entityName: string,
-    readonly filterOnlyActive: boolean = false
+    readonly filterOnlyActive: boolean = false,
   ) {}
 
   async paginate<T>(params: {
@@ -25,7 +24,7 @@ export class BaseRepository {
       include,
       select,
       orderBy = {
-        createdAt: "desc",
+        createdAt: 'desc',
       },
       distinct,
     } = params;
@@ -55,7 +54,7 @@ export class BaseRepository {
       itemsPerPage: options.NONE,
       totalPages: Math.ceil(transaction[0] / options.AT_TARGET),
       currentPage: options.NONE == 0 ? 1 : options.CAPTURING_PHASE,
-    } ;
+    };
 
     return {
       items: transaction[1],
@@ -120,13 +119,13 @@ export class BaseRepository {
 
   public formatRelations(object: any): any {
     if (object) {
-      if (typeof object === "object") {
+      if (typeof object === 'object') {
         Object.keys(object).map((key) => {
           let value = object[key];
-          if (typeof value === "object") {
+          if (typeof value === 'object') {
             this.formatRelations(value);
           } else {
-            if (typeof value === "string") {
+            if (typeof value === 'string') {
               const parsedDate = new Date(value);
               object[key] = parsedDate || value;
             }
@@ -145,9 +144,9 @@ export class BaseRepository {
           Array.isArray(value)
             ? value.map((i) => this.sanitizeQuery(i))
             : value === Object(value)
-            ? this.sanitizeQuery(value)
-            : value,
-        ])
+              ? this.sanitizeQuery(value)
+              : value,
+        ]),
     );
   }
 }

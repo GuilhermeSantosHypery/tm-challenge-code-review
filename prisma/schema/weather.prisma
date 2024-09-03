@@ -1,0 +1,18 @@
+model Weather {
+    id          BigInt  @id
+    cloudPct    BigInt? @map("cloud_pct")
+    temp        BigInt? @map("temp")
+    feelsLike   BigInt? @map("feels_like")
+    humidity    BigInt? @map("humidity")
+    minTemp     BigInt? @map("min_temp")
+    maxTemp     BigInt? @map("max_temp")
+    windSpeed   BigInt? @map("wind_speed")
+    windDegrees BigInt? @map("wind_degrees")
+    sunrise     BigInt? @map("sunrise")
+    sunset      BigInt? @map("sunset")
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@map("weather")
+}
