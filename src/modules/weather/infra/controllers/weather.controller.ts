@@ -19,7 +19,7 @@ export class WeatherController {
 
   @Get('/city')
   @HttpCode(200)
-  createAccessToken(@Query('city') city: string): Promise<WeatherResponseData> {
+  getCity(@Query('city') city: string): Promise<WeatherResponseData> {
     return this.service.getCity(city);
   }
 
