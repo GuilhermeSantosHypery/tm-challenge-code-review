@@ -1,4 +1,4 @@
-import { WheatherMapper } from '@/weather/application/mapper/weather.mapper';
+import { WeatherMapper } from '@/weather/application/mapper/weather.mapper';
 import { Injectable } from '@nestjs/common';
 import { PrismaRepository } from '@shared/infra/database/prisma/PrismaRepository';
 import { WeatherDomain } from '../entity/Weather.domain';
@@ -13,7 +13,7 @@ export class WheatherRepository {
       return [];
     }
 
-    return cities.map((city) => WheatherMapper.toPersistence(city));
+    return cities.map((city) => WeatherMapper.toPersistence(city));
   }
 
   async findByCity(id: string): Promise<WeatherDomain | null> {
@@ -27,6 +27,6 @@ export class WheatherRepository {
       return null;
     }
 
-    return WheatherMapper.toPersistence(found);
+    return WeatherMapper.toPersistence(found);
   }
 }

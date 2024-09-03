@@ -1,7 +1,7 @@
 import { WeatherDomain } from '@/weather/domain/entity/Weather.domain';
 import { Weather } from '@prisma/client';
 
-export class WheatherMapper {
+export class WeatherMapper {
   static toPersistence(weather: Weather): WeatherDomain {
     return WeatherDomain.create(
       {
@@ -16,7 +16,7 @@ export class WheatherMapper {
         sunset: weather.sunset,
         temp: weather.temp,
       },
-      weather.id.toString(),
+      weather.id,
     );
   }
 }
